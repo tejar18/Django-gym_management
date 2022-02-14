@@ -1,0 +1,28 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<center><h2 style = "font-family : 'Monotype Corsiva' ; color : #E6120E
+ ; font-weight : bold;margin-top:2%">About Us</h2></center><hr>
+<section id="about">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6">
+                         <img src="{% static 'images/gym4.jpg' %}" style="height:350px;width:97%">
+                    </div>
+                         <div class="col-md-6">
+                         <p style="color:blue;font-size:22px;font-family:cursive"> We all know health is a wealth. We do not need a fancy car, big apartment, a doctor
+degree without a health. Being healthy is a first thing we need to keep in mind.
+Because most of time our attitude depends on how we feel. Being healthy and fit
+gives us energy to do anything. Physical fitness is very necessary for a healthy and
+tension free life. Physical fitness includes diet, exercise and sleep. These three basic
+things have their own importance in each individual's life and everyone should be
+sensible with regard to these for a healthy life.
+</p>
+                    </div>
+
+
+               </div>
+          </div>
+     </section>
+{% endblock %}

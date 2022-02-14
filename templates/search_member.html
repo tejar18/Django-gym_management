@@ -1,0 +1,37 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+
+<div class="container" style="width:100%;background:white">
+      <center><h2 style="padding-top:5%;margin-top:5%;font-weight:bold;font-family : 'Monotype Corsiva' ;color:red">Search Member With First Letter</h2></center>
+<hr>
+ <div class="container-fluid">
+	 {% for i in alpha %}
+	 <a href="{% url 'search_member' i.alphabet %}"> {{i.alphabet}} </a>
+	 {% endfor %}
+   	<h1 class="text-center mt-5 mb-5">
+   	</h1>
+   		<div class="row" style="margin-bottom:5%">
+			{% for j in member %}
+			{% if j.user in pro %}
+			{% if not j.user.is_staff %}
+
+				<div class="col-md-3">
+                    <div style="padding:10px;width:80%;margin-bottom:5%;border-radius:3%;border:1px solid grey">
+					<center><img src="{{j.image.url}}" style="margin-top:1%;width:170px;height:170px;float:center"></center>
+   						<div><hr>
+   						<h5 style="color:red;font-weight:bold">{{j.user.first_name}} {{j.user.last_name}} </h5>
+   						<p><i class="fa fa-phone" style="color:green"></i> : {{j.contact}}</p>
+
+                            <a href="{% url 'view_member_detail' j.id %}"><button type="submit" class="btn btn-primary" style="width:98%">View Detail</button></a>
+   					</div>
+   				</div></div>
+			{% endif %}
+			{% endif %}
+			{% endfor %}
+
+	</div>
+ </div>
+
+      </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+
+<div class="container" style="width:100%;background:white">
+      <center><h2 style="padding-top:5%;margin-top:5%;font-weight:bold;font-family : 'Monotype Corsiva' ;color:red">View Activity</h2></center>
+<hr>
+ <div class="container-fluid">
+   	<h1 class="text-center mt-5 mb-5">
+   	</h1>
+   		<div class="row" style="margin-bottom:5%">
+			{% for j in act %}
+				<div class="col-md-3">
+                    <div style="padding:10px;width:80%;margin-bottom:5%;border-radius:3%;border:1px solid grey">
+					<center><img src="{{j.activity.image.url}}" style="margin-top:1%;width:170px;height:140px;float:center"></center>
+   						<div><hr>
+   						<h5 style="color:red;font-weight:bold">{{j.activity.name}} </h5>
+   						<span style="font-size:15px"><i class="fa fa-phone" style="color:green"></i> : {{j.trainer.contact}}</span><br>
+   						<span style="font-size:15px"><i class="fa fa-clock-o" style="color:green"></i> : {{j.timing}}</span><br>
+   						<span style="font-size:15px"> Day : {{j.day1}}</span><br>
+                            <a href="{% url 'join_batch' j.id %}"><button class="btn btn-primary" style="width:100%">Join Now</button></a>
+   					</div>
+   				</div></div>
+			{% endfor %}
+
+	</div>
+ </div>
+
+      </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+<style>
+.row{
+text-align:left;
+}</style>
+<div class="container" style="padding:1%;background-color:White;border-radius:10px;width:90%;margin-top:4%;">
+<h3 style="font-weight:bold;margin-top:2%;margin-bottom:3%;color:grey">Add Package</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Enter Package name<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="text" placeholder="Enter Package name" style="width:100%;padding:5px" name="name">
+    </div>
+    </div>
+
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Enter Price<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="number" placeholder="Enter Price" style="width:100%;padding:5px" name="price">
+    </div>
+    </div>
+
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Image of Package<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="file" style="width:100%;padding:5px" name="image">
+    </div>
+    </div>
+        <div align="center">
+        <button type="submit" class="btn btn-dark" style="height:45px;margin-top:2%;width:25%;float:center">
+            Submit</button>
+</div>
+    </form>
+
+    </div>
+{% if error %}
+<script>
+    alert('Added Package Successfully');
+    window.location = "{% url 'view_package' %}";
+</script>
+{% endif %}
+
+  {% endblock %}

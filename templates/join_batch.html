@@ -1,0 +1,34 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+
+<div class="container" style="width:100%;background:white">
+    <div class="container-fluid" style="padding:20px">
+        <div class="row" style="margin-bottom:4%;border:1px solid grey;border-radius:2%">
+            <div class="col-md-12" style="font-weight:bold;color:green">
+                Are You sure to join this Activity?
+            </div><hr>
+            <div class="col-md-12" style="margin-top:2%;margin-bottom:2%">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Yes</button>
+                    <button  class="btn btn-danger"><a href="{% url 'activity' %}" style="color:white">Cancel</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% ifequal terror "already" %}
+<script>
+    alert('You have already joined this activity.');
+    window.location = ('{% url 'activity' %}');
+</script>
+{% endifequal %}
+{% ifequal terror "create" %}
+<script>
+    alert('Successfully join this activity.');
+    window.location = ('{% url 'my_batch' %}')";
+</script>
+{% endifequal %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+<style>
+td{
+font-size:15px;
+    }
+</style>
+<div style="background-color:lightgrey;width:100%;height:800px;position:absolute">
+<div class="container" style="margin-top:%;background:white;width:100%;height:88%">
+<center><h2 style = "margin-top:2%;padding:15px;font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:5%">View Order</h2></center><hr>
+
+<table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>MemberFullName</th>
+    <th>OrderId</th>
+    <th>OrderDate</th>
+    <th>Total</th>
+    <th>Status</th>
+    <th>View</th>
+    <th>Assign</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+   <tbody>
+
+{% for i in book %}
+  <tr>
+    <td>{{i.member.user.first_name}} {{i.member.user.last_name}}</td>
+    <td>{{i.booking_id}}</td>
+    <td>{{i.book_date}}</td>
+    <td>{{i.total}}</td>
+    <td>{{i.status.status}}</td>
+    <td><a href="{% url 'order_detail' i.booking_id i.id %}"><i style="font-size:30px;color:green" class="fa fa-eye"></i></a></td>
+    <td><a href="{% url 'status1' i.id %}"><i style="font-size:30px;color:green">assign</i></a></td>
+    <td><a href="{% url 'delete_order' i.id %}"><i style="font-size:30px;color:red" class="fa fa-trash-o" onclick="return confirm('Are you sure?')"></i></a> </td>
+  </tr>
+
+   {% endfor %}
+
+    </tbody>
+</table>
+
+ </div></div>
+
+<script>
+            var el_up = document.getElementById("GFG_UP");
+
+            el_up.innerHTML =
+                "Click on the LINK for further confirmation.";
+</script>
+{% endblock %}

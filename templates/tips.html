@@ -1,0 +1,17 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+
+<div class="container" style="width:100%;background:white">
+      <center><h2 style="padding-top:5%;margin-top:5%;font-weight:bold;font-family : 'Monotype Corsiva' ;color:red">View Tips</h2></center>
+<hr>
+    <div class="container-fluid">
+        {% for i in tips %}
+        <div class="row" style="margin-bottom:4%;border:1px solid grey;border-radius:1%">
+            <div class="col-md-12" style="background:lightgrey;font-weight:bold;color:green">{{i.title}}</div><hr>
+            <div class="col-md-12">{{i.desc}}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

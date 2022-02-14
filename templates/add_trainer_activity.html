@@ -1,0 +1,82 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+<style>
+.row{
+text-align:left;
+}</style>
+<div class="container" style="padding:1%;background-color:White;border-radius:10px;width:90%;margin-top:4%;">
+<h3 style="font-weight:bold;margin-top:2%;margin-bottom:3%;color:grey">Add Trainer Activity</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Selete Activity<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <select name="activity" style="padding:10px;width:100%">
+            {% for i in activity %}
+            <option value="{{i.name}}">{{i.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+        </div>
+
+        <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Selete Trainer<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <select name="trainer" style="padding:10px;width:100%">
+            {% for i in trainer %}
+            <option value="{{i.user.username}}">{{i.user.username}}</option>
+            {% endfor %}
+        </select>
+    </div>
+        </div>
+
+        <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Selete Timing<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <select name="timing" style="padding:10px;width:100%">
+            {% for i in batch %}
+            <option value="{{i.timing}}">{{i.timing}}</option>
+            {% endfor %}
+        </select>
+    </div>
+        </div>
+
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Selete Day<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <select name="day" style="padding:10px;width:100%">
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
+    </div>
+        </div>
+
+        <div align="center">
+        <button type="submit" class="btn btn-dark" style="height:45px;margin-top:2%;width:25%;float:center">
+            Submit</button>
+</div>
+    </form>
+
+    </div>
+{% if error %}
+<script>
+    alert('Added Trainer Activity Successfully');
+    window.location = "{% url 'view_all_activity' %}";
+</script>
+{% endif %}
+
+  {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+
+<div class="container" style="width:100%;background:white">
+      <center><h2 style="padding-top:5%;margin-top:5%;font-weight:bold;font-family : 'Monotype Corsiva' ;color:red">View Product</h2></center>
+<hr>
+ <div class="container-fluid">
+   	<h1 class="text-center mt-5 mb-5">
+   	</h1>
+   		<div class="row" style="margin-bottom:5%">
+			{% for j in pro %}
+				<div class="col-md-3">
+                    <div style="padding:10px;width:80%;margin-bottom:5%;border-radius:3%;border:1px solid grey">
+					<center><img src="{{j.image.url}}" style="margin-top:1%;width:170px;height:170px;float:center"></center>
+   						<div><hr>
+   						<h5 style="color:red;font-weight:bold"> {{j.name}} </h5>
+   						<p>Price : {{j.price}}</p>
+							<form action="{% url 'add_cart' j.id %}" method="post">
+								{% csrf_token %}
+								<a href="{% url 'add_cart' j.id %}"><button type="submit" class="btn btn-primary" style="width:98%">Add to Cart</button></a>
+							</form>
+   					</div>
+   				</div></div>
+			{% endfor %}
+
+	</div>
+ </div>
+
+      </div>
+{% endblock %}
